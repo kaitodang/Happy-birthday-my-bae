@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacked</title>
+    <link rel="stylesheet" href="hack.css">
+</head>
+<body>
+    <div id="message">Your computer has been hacked!</div>
+
+    <script>
+        let clicked = false;
+        let messageElement = document.getElementById('message');
+        let newMessage = "...for a special event!";
+        let index = 0;
+
+        function typeMessage() {
+            if (index < newMessage.length) {
+                messageElement.textContent += newMessage.charAt(index);
+                index++;
+                // Adjust typing speed here (milliseconds per character)
+                setTimeout(typeMessage, 80); 
+            }
+        }
+
+        document.body.addEventListener('click', function() {
+            if (!clicked) {
+                clicked = true;
+                messageElement.textContent = ""; // Clear the original message
+                typeMessage();
+            } else {
+                window.location.href = 'progress.html';
+            }
+        });
+    </script>
+</body>
+</html>
